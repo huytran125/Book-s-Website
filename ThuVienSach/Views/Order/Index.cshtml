@@ -1,0 +1,126 @@
+﻿@using Model.EF;
+@model List<Order_detail>
+<div class="shop-section mb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="cart-tab">
+                    <li>
+                        <a class="active" href="#shopping-cart" data-toggle="tab">
+                            <span>01</span>
+                            Shopping cart
+                        </a>
+                    </li>
+                  
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <!-- Tab panes -->
+                @if (Model != null)
+                {
+                    <div class="shopping-cart-content">
+                        <form action="#">
+                            <div class="table-content table-responsive mb-50">
+                                <table class="text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">product</th>
+                                            <th class="product-price">price</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">total</th>
+                                            <th class="product-remove">remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- tr -->
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td class="product-thumbnail">
+                                                    <div class="pro-thumbnail-img">
+                                                        <img src="img/cart/1.jpg" alt="">
+                                                    </div>
+                                                    <div class="pro-thumbnail-info text-left">
+                                                        <h6 class="product-title-2">
+                                                            @item.Book.Name
+                                                        </h6>
+
+                                                        <p>Author: @item.Book.Author.Name</p>
+                                                        <p> Publisher: @item.Book.NXB.Name</p>
+                                                    </div>
+                                                </td>
+                                                <td class="product-price">@item.Book.Price</td>
+                                                <td class="product-quantity">
+                                                    @item.Number
+                                                </td>
+                                                <td class="product-subtotal">@item.Money</td>
+                                                <td class="product-remove">
+                                                    <a href="/Order/Delete?IdBook=@item.Id_book">Remove</a>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <div class="payment-details box-shadow p-30 mb-50">
+                                        <h6 class="widget-title border-left mb-20">Payment details</h6>
+                                        <table>
+                                            <tbody>
+
+                                                <tr>
+                                                    <td class="td-title-1">Cart Subtotal</td>
+                                                    <td class="td-title-2">
+                                                        @{ long final = 0;}
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            final = Convert.ToInt64(item.Money) + final;
+                                                        }
+                                                        @final.ToString() VND;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-title-1">Shipping and Handing</td>
+                                                    <td class="td-title-2">15000 VND</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-title-1">Vat </td>
+                                                    <td class="td-title-2">
+                                                        @{long VAT = (final * 10) / 100;
+                                                            long Final2 = VAT + 15000 + final;
+                                                        } @VAT VND
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="order-total">Order Total</td>
+                                                    <td class="order-total-price">@Final2 VND</td>
+                                                </tr>
+
+
+
+
+                                            </tbody>
+
+                                        </table>
+                                        <button class="submit-btn-1 black-bg btn-hover-2"><a href="/Complete/Complete">Submit</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <div class="shopping-cart-content">
+                        <h1>Empty Cart</h1>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

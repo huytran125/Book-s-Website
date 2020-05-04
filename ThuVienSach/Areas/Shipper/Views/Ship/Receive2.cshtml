@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Receive2";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@using Model.EF;
+@using Model.DAO
+@model IEnumerable<Order>
+<div class="shop-section mb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                `
+                Order you have to ship
+            </div>
+            <div class="col-md-10">
+                <!-- Tab panes -->
+                <div class="order-complete-content box-shadow">
+                    <div class="thank-you p-30 text-center">
+                        <h1 class="text-black-5 mb-0">List Order you have complete</h1>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="billing-details pr-10">
+                                    <h4 class="widget-title border-left mb-20">Bill Code: @item.Id</h4>
+                                    <p>Your name is @item.Customer.Name</p>
+                                    <p>Your phone is @item.Customer.Phone</p>
+                                    <p>Your email is @item.Customer.Account.Email</p>
+                                    <p>Order's Adress: @item.Address</p>
+                                    <p>
+                                        Shipper: @{Worker_Dao worker_Dao = new Worker_Dao();
+                                            string huy = worker_Dao.FindX(Convert.ToInt64(item.Id_Shipper)).Name; }@huy
+                                        </p>
+
+                                        <p>
+                                            Order's status: @{String x;
+
+
+                                                if (item.status == true)
+                                                { x = "Arrival"; }
+                                                else
+                                                {
+                                                    x = "Has not arrival yet";
+
+
+                                                }
+                                            }
+
+                                            @x;
+                                        </p>
+                                    </div>
+                                
+
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- our order -->
+                                    <div class="payment-details pl-10 mb-50">
+                                        <h6 class="widget-title border-left mb-20">our order</h6>
+                                        <table>
+                                            <tbody>
+                                                @{ OrderDetail_Dao orderDetail_Dao = new OrderDetail_Dao();
+                                                    IEnumerable<Order_detail> a = orderDetail_Dao.ListOrder(item.Id);}
+                                                @foreach (var item1 in a)
+                                                {
+                                                    <tr>
+                                                        <td class="td-title-1">
+                                                            @{Book_Dao dao = new Book_Dao();
+                                                                String name = dao.FindBook(Convert.ToInt32(item1.Id_book)).Name;
+                                                            }
+                                                            @name
+                                                        </td>
+                                                        <td class="td-title-2">@item1.Money VND</td>
+                                                    </tr>
+                                                }
+
+                                                <tr>
+                                                    <td class="td-title-1">Cart Subtotal</td>
+                                                    <td class="td-title-2">
+                                                        @{ long final = 0;}
+                                                        @foreach (var item1 in a)
+                                                        {
+                                                            final = Convert.ToInt64(item1.Money) + final;
+                                                        }
+                                                        @final.ToString() VND;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-title-1">Shipping and Handing</td>
+                                                    <td class="td-title-2">15000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td-title-1">Vat</td>
+                                                    <td class="td-title-2">
+                                                        @{long VAT = (final * 10) / 100;
+                                                            long Final2 = VAT + 15000 + final;
+                                                        } @VAT VND
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="order-total">Order Total</td>
+                                                    <td class="order-total-price">@item.total</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

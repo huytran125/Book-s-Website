@@ -1,0 +1,1162 @@
+﻿@using Model.EF;
+
+
+@model  ThuVienSach.Areas.Admin.Models.BookModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+
+
+<link href="~/Asserts/subas/SlideProduct.css" rel="stylesheet" />
+
+
+
+
+<div class="shop-section mb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 ">
+
+
+                <!-- widget-search -->
+                <aside class="widget-search mb-30">
+                    <form action="/Admin/Book/Search" method="post">
+                        <input name="Search" type="text" placeholder="Search here...">
+                        <button type="submit" style="margin-top:-50px"><i class="zmdi zmdi-search"></i></button>
+                    </form>
+                </aside>
+                <!-- widget-categories -->
+                <aside class="widget widget-categories box-shadow mb-30">
+                    <h6 class="widget-title border-left mb-20">Categories</h6>
+                    <div id="cat-treeview" class="product-cat">
+                        <ul>
+                            <li class="closed">
+                                <a href="/Admin/Book">All book of this category</a>
+
+
+                            </li>
+
+                            @foreach (var item in Model.Father_Categories)
+                            {
+                                <li class="closed">
+                                    <a href="#">@Html.DisplayFor(modelItem => item.Name)</a>
+                                    <ul>
+                                        <li>
+                                            @{ var x = "#Delete" + item.Id;
+                                            }
+                                            <a href="#" data-toggle="modal" data-target="@x" title="Quickview"><i class="zmdi zmdi-shopping-cart"></i>Add one more book</a>
+                                        </li>
+                                        <li><a href="/Admin/Book/Detail?Idfather=@item.Id&Idson=null">All book of this category</a></li>
+
+                                    </ul>
+                                    @foreach (var itemson in item.Categories)
+                                    {
+                                        <ul>
+                                            <li><a href="/Admin/Book/Detail?Idfather=@item.Id&Idson=@itemson.Id">@Html.DisplayFor(modelItem => itemson.Name)</a></li>
+
+                                        </ul>
+                                    }
+
+                                </li>
+
+
+
+                            }
+                        </ul>
+
+                    </div>
+                </aside>
+
+            </div>
+
+            <div class="col-md-8 ">
+                <div class="shop-content">
+                    <!-- shop-option start -->
+                    <div class="shop-option box-shadow mb-30 clearfix">
+                        <!-- Nav tabs -->
+
+                    </div>
+                    <!-- shop-option end -->
+                    <!-- Tab Content start -->
+                    <div class="tab-content">
+                        <!-- grid-view -->
+                        <div role="tabpanel" class="tab-pane active" id="grid-view">
+                            <div class="row">
+                                @foreach (var item in Model.books)
+                                {
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="product-item">
+                                            <div class="product-img">
+                                                <a>
+                                                    <img style="height:300px;" src="@Url.Action("DownloadFile", "File", new {Area = "", fileId = item.file_id_image })" />
+                                                </a>
+                                            </div>
+                                            <div class="product-info">
+                                                <h6 class="product-title">
+                                                    <a href="single-product.html">@item.Name </a>
+                                                </h6>
+
+
+                                                <ul class="action-button">
+
+                                                    <li>
+                                                        <a href="#" data-toggle="modal" data-target="#@item.Id" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        <!-- list-view -->
+                        <div role="tabpanel" class="tab-pane" id="list-view">
+                            <div class="row">
+                                <!-- product-item start -->
+                                <div class="col-md-12">
+                                    <div class="shop-list product-item">
+                                        <div class="product-img">
+                                            <a href="single-product.html">
+                                                <img src="img/product/7.jpg" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="clearfix">
+                                                <h6 class="product-title f-left">
+                                                    <a href="single-product.html">Dummy Product Name </a>
+                                                </h6>
+                                                <div class="pro-rating f-right">
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="brand-name mb-30">Brand Name</h6>
+                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <ul class="action-button">
+                                                <li>
+                                                    <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product-item end -->
+                                <!-- product-item start -->
+                                <div class="col-md-12">
+                                    <div class="shop-list product-item">
+                                        <div class="product-img">
+                                            <a href="single-product.html">
+                                                <img src="img/product/10.jpg" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="clearfix">
+                                                <h6 class="product-title f-left">
+                                                    <a href="single-product.html">Dummy Product Name </a>
+                                                </h6>
+                                                <div class="pro-rating f-right">
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="brand-name mb-30">Brand Name</h6>
+                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <ul class="action-button">
+                                                <li>
+                                                    <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product-item end -->
+                                <!-- product-item start -->
+                                <div class="col-md-12">
+                                    <div class="shop-list product-item">
+                                        <div class="product-img">
+                                            <a href="single-product.html">
+                                                <img src="img/product/4.jpg" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="clearfix">
+                                                <h6 class="product-title f-left">
+                                                    <a href="single-product.html">Dummy Product Name </a>
+                                                </h6>
+                                                <div class="pro-rating f-right">
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="brand-name mb-30">Brand Name</h6>
+                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <ul class="action-button">
+                                                <li>
+                                                    <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product-item end -->
+                                <!-- product-item start -->
+                                <div class="col-md-12">
+                                    <div class="shop-list product-item">
+                                        <div class="product-img">
+                                            <a href="single-product.html">
+                                                <img src="img/product/8.jpg" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="clearfix">
+                                                <h6 class="product-title f-left">
+                                                    <a href="single-product.html">Dummy Product Name </a>
+                                                </h6>
+                                                <div class="pro-rating f-right">
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="brand-name mb-30">Brand Name</h6>
+                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <ul class="action-button">
+                                                <li>
+                                                    <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product-item end -->
+                                <!-- product-item start -->
+                                <div class="col-md-12">
+                                    <div class="shop-list product-item">
+                                        <div class="product-img">
+                                            <a href="single-product.html">
+                                                <img src="img/product/2.jpg" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="clearfix">
+                                                <h6 class="product-title f-left">
+                                                    <a href="single-product.html">Dummy Product Name </a>
+                                                </h6>
+                                                <div class="pro-rating f-right">
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                                    <a href="#"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="brand-name mb-30">Brand Name</h6>
+                                            <h3 class="pro-price">$ 869.00</h3>
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <ul class="action-button">
+                                                <li>
+                                                    <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#productModal" title="Quickview"><i class="zmdi zmdi-zoom-in"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product-item end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Content end -->
+                    <!-- shop-pagination start -->
+                    <ul class="shop-pagination box-shadow text-center ptblr-10-30">
+                        <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                        <li><a href="#">01</a></li>
+                        <li><a href="#">02</a></li>
+                        <li><a href="#">03</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">05</a></li>
+                        <li class="active"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                    </ul>
+                    <!-- shop-pagination end -->
+
+                </div>
+            </div>
+
+
+
+            <div id="quickview-wrapper">
+                <!-- Modal -->
+                @foreach (var item in Model.books)
+
+                {
+                    <div class="modal fade" id="@item.Id" tabindex="-1" role="dialog">
+                        <div style="margin-top:30px;width:85%" class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-product clearfix">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+                                        @if (true)
+                                        {
+
+                                            if (true)
+                                            {
+
+                                                <div class="product-images">
+                                                    <div class="main-image images">
+                                                        <img style="margin-top:50px;height:600px;width:400px;" src="@Url.Action("DownloadFile", "File", new { Area = "", fileId = item.file_id_image })" />
+
+                                                    </div>
+                                                </div><!-- .product-images -->
+
+
+                                                <div class="product-info">
+                                                    <h1>@item.Name</h1>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">Price:   @item.Price</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+
+                                                            <span class="new-price">
+                                                                <strong>Category:</strong>
+                                                                @item.Category.Father_category.Name
+                                                                @if (item.Category == null)
+                                                                {<em></em><br>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <text>/</text> @item.Category.Name <em> </em><br>
+
+
+                                                                }
+
+
+
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">
+                                                                <strong>Count:</strong>
+                                                                @item.Number_left			<em></em><br>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">
+                                                                <strong>Download ebook:</strong>
+                                                                <a class="download-file1" href="@Url.Action("DownloadFile", "File", new { Area = "", fileId = item.file_id_pdf })" target="_blank">
+                                                                    @{ string x;}
+                                                                    @if (item.File1 == null)
+                                                                    {
+                                                                        x = "File is still update";
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        x = item.File1.file_name;
+                                                                    }
+
+                                                                    @x
+                                                                </a>			<em></em><br>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="quick-desc">
+                                                        <div class="single-product-tab">
+                                                            <ul class="reviews-tab mb-20">
+                                                                @{
+                                                                    string description = "#description" + item.Id;
+                                                                    string description1 = "description" + item.Id;
+
+                                                                    string information = "#information" + item.Id;
+                                                                    string information1 = "information" + item.Id;
+
+
+                                                                    string reviews = "#reviews" + item.Id;
+                                                                    string reviews1 = "reviews" + item.Id;
+                                                                    string edit = "#edit" + item.Id;
+
+
+
+
+
+                                                                }
+                                                                <li class=""><a href="@description" data-toggle="tab" aria-expanded="false">More Information</a></li>
+                                                                <li class=""><a href="@information" data-toggle="tab" aria-expanded="false">Description</a></li>
+                                                            </ul>
+                                                            <div class="tab-content">
+                                                                <div role="tabpanel" class="tab-pane active" id="@description1">
+                                                                    <div style="display:grid;  grid-template-columns: auto auto ;">
+                                                                        <div class="grid-item">
+                                                                            <p>
+                                                                                <strong>Author:</strong>
+                                                                                @item.Author.Name
+                                                                                <br>
+                                                                                <strong>Publisher:</strong>
+                                                                                @item.NXB.Name <em></em><br>
+                                                                                <strong>Page:</strong>
+                                                                                @item.Page <em></em><br>
+
+
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="grid-item" style="width:50%">
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div role="tabpanel" class="tab-pane" id="@information1">
+                                                                    <p>@item.Description</p>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="social-sharing">
+                                                        <div class="widget widget_socialsharing_widget">
+                                                            <h3 class="widget-title-modal">Action:</h3>
+                                                            <ul class="social-icons clearfix">
+
+                                                                <li>
+
+                                                                    <a class="google-plus" href="#" data-toggle="modal" data-target="@edit" title="Quickview"><i class="zmdi zmdi-edit"></i></a>
+
+                                                                </li>
+                                                                <li>
+
+                                                                    <a class="google-plus" href="/Admin/Product/Delete4?Id=@item.Id" title="Delete"><i class="zmdi zmdi-delete"></i></a>
+
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            }
+
+
+                                        }
+
+                                        '                      <!---product-info -->
+                                    </div><!-- .modal-product -->
+                                </div><!-- .modal-body -->
+                            </div><!-- .modal-content -->
+                        </div><!-- .modal-dialog -->
+                    </div>
+                    <!-- END Modal -->
+                }
+            </div>
+
+
+
+            <div id="quickview-wrapper2">
+                <!-- Modal -->
+                @foreach (var item in Model.books)
+
+                {
+                    string edit2 = "edit" + item.Id;
+
+                    <div class="modal fade" id="@edit2" tabindex="-1" role="dialog">
+                        <div style="margin-top:30px;width:85%" class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-product clearfix">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <form action="/File" class="form-horizontal" enctype="multipart/form-data" method="post" role="form">
+                                                    <input type="hidden" name="book" value="@item.Id" />
+                                                    <input type="hidden" name="check" value="1" />
+                                                    @Html.AntiForgeryToken()       <div class="well bs-component">
+                                                        <br>
+                                                        <h4>Upload File</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-8 col-md-push-2">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <span class="submit-btn-1 mt-20 btn-hover-1">
+                                                                                Browse…
+                                                                                <input class="form-control" data-val="true" data-val-required="The Upload File field is required." id="FileAttach" name="FileAttach" placeholder="Upload File" type="file" value="">
+                                                                            </span>
+                                                                        </span>
+                                                                        <input type="text" class="form-control" readonly="">
+                                                                    </div>
+                                                                    <span class="field-validation-valid text-danger custom-danger" data-valmsg-for="FileAttach" data-valmsg-replace="true"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-5 col-md-10">
+                                                                <input type="submit" class="btn btn-danger" value="Upload">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <form action="/File" class="form-horizontal" enctype="multipart/form-data" method="post" role="form">
+                                                    <input type="hidden" name="book" value="@item.Id" />
+                                                    <input type="hidden" name="check" value="0" />
+                                                    @Html.AntiForgeryToken()       <div class="well bs-component">
+                                                        <br>
+                                                        <h4>Upload Image</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-8 col-md-push-2">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <span class="submit-btn-1 mt-20 btn-hover-1">
+                                                                                Browse…
+                                                                                <input class="form-control" data-val="true" data-val-required="The Upload File field is required." id="FileAttach" name="FileAttach" placeholder="Upload File" type="file" value="">
+                                                                            </span>
+                                                                        </span>
+                                                                        <input type="text" class="form-control" readonly="">
+                                                                    </div>
+                                                                    <span class="field-validation-valid text-danger custom-danger" data-valmsg-for="FileAttach" data-valmsg-replace="true"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-5 col-md-10">
+                                                                <input type="submit" class="btn btn-danger" value="Upload">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                        <form action="/Admin/Book/Edit" method="post">
+
+                                            @if (true)
+                                            {
+
+
+
+
+
+
+                                                <div class="product-images">
+
+
+                                                    <div class="main-image images">
+                                                        <img style="margin-top:50px;height:600px;width:400px;" src="@Url.Action("DownloadFile", "File", new { Area = "", fileId = item.file_id_image })" />
+
+                                                    </div>
+                                                </div><!-- .product-images -->
+
+
+                                                <div class="product-info">
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">Name:   </span><br />
+                                                            <input type="text" name="name" value="@item.Name"><br>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">Price:   </span><br />
+                                                            <input style="width:30%" type="number" name="price" value="@item.Price"><br>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+
+                                                            <span class="new-price">
+                                                                <strong>Category:</strong><br />
+
+                                                                @item.Category.Father_category.Name
+
+                                                                /
+                                                                <select name="son" style="width:30%">
+                                                                    @if (item.Category != null)
+                                                                    {
+                                                                        <option value="@item.Category.Id">@item.Category.Name</option>
+
+                                                                        foreach (var father in Model.Father_Categories)
+                                                                        {
+                                                                            if (father.Id == item.Category.Father_category.Id)
+                                                                            {
+
+                                                                                foreach (var son in father.Categories)
+                                                                                {
+                                                                                    if (son.Id != item.Category.Id)
+                                                                                    {
+                                                                                        <option value="@son.Id">@son.Name</option>
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    { }
+                                                                </select>
+
+
+
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">
+                                                                <strong>Number:</strong><br />
+                                                                <input type="number" name="number" value="@item.Number_left"><br>
+                                                                <em></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">
+                                                                <strong>Download ebook:</strong>
+                                                                <a class="download-file1" href="@Url.Action("DownloadFile", "File", new { Area = "", fileId = item.file_id_pdf })" target="_blank">
+                                                                    @{ string x;}
+                                                                    @if (item.File1 == null)
+                                                                    {
+                                                                        x = "File is still update";
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        x = item.File1.file_name;
+                                                                    }
+
+                                                                    @x
+                                                                </a>			<em></em><br>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="quick-desc">
+                                                        <div class="single-product-tab">
+                                                            <ul class="reviews-tab mb-20">
+                                                                @{
+                                                                    string description = "#descriptionX" + item.Id;
+                                                                    string description1 = "descriptionX" + item.Id;
+
+                                                                    string information = "#informationX" + item.Id;
+                                                                    string information1 = "informationX" + item.Id;
+
+
+                                                                    string reviews = "#reviewsX" + item.Id;
+                                                                    string reviews1 = "reviewsX" + item.Id;
+                                                                    string edit = "#edit" + item.Id;
+
+
+
+
+
+                                                                }
+                                                                <li class=""><a href="@description" data-toggle="tab" aria-expanded="false">More Information</a></li>
+                                                                <li class=""><a href="@information" data-toggle="tab" aria-expanded="false">Description</a></li>
+
+                                                            </ul>
+                                                            <div class="tab-content">
+                                                                <div role="tabpanel" class="tab-pane active" id="@description1">
+                                                                    <div style="display:grid;  grid-template-columns: auto auto ;">
+                                                                        <div class="grid-item">
+                                                                            <p>
+
+
+
+                                                                                <strong>Author:</strong><br>
+                                                                                <select name="author" style="width:60%">
+                                                                                    <option value="@item.Author.Id">@item.Author.Name</option>
+
+                                                                                    @foreach (var color in Model.authors)
+                                                                                    {
+                                                                                        if (color.Id != item.Author.Id)
+                                                                                        {
+                                                                                            <option value="@color.Id">@color.Name</option>
+
+                                                                                        }
+                                                                                    }
+                                                                                </select>
+                                                                                <em></em><br>
+                                                                                <strong>Publisher:</strong><br />
+                                                                                <select name="NXB" style="width:60%">
+                                                                                    <option value="@item.NXB.Id">@item.NXB.Name</option>
+
+                                                                                    @foreach (var chatlieu in Model.nXBs)
+                                                                                    {
+                                                                                        if (chatlieu.Id != item.NXB.Id)
+                                                                                        {
+                                                                                            <option value="@chatlieu.Id">@chatlieu.Name</option>
+
+                                                                                        }
+                                                                                    }
+                                                                                </select>
+                                                                                <em></em><br>
+
+                                                                                <strong>Page:</strong> <br />
+                                                                                <input type="number" placeholder="Fill in the number value" name="page" value="@item.Page" style="width:30%"> /
+
+                                                                                <em></em>
+
+
+                                                                            </p>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div role="tabpanel" class="tab-pane" id="@information1">
+                                                                    <textarea name="description">
+ @item.Description
+</textarea>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="social-sharing">
+                                                        <div class="widget widget_socialsharing_widget">
+                                                            <h3 class="widget-title-modal">Share this product</h3>
+                                                            <ul class="social-icons clearfix">
+
+                                                                <li>
+                                                                    <button type="submit" class="pinterest" href="#" target="_blank" title="Save">
+                                                                        <i class="zmdi zmdi-save zmdi-hc-3x"></i>
+                                                                    </button>
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            }
+                                        </form>
+
+
+
+
+                                        '                      <!---product-info -->
+                                    </div><!-- .modal-product -->
+                                </div><!-- .modal-body -->
+                            </div><!-- .modal-content -->
+                        </div><!-- .modal-dialog -->
+                    </div>
+
+
+
+
+                    <!-- END Modal -->
+                }
+            </div>
+
+
+            <div id="quickview-wrapper3">
+                <!-- Modal -->
+                @foreach (var item in Model.Father_Categories)
+
+                {
+                    string edit2 = "Delete" + item.Id;
+
+                    <div class="modal fade" id="@edit2" tabindex="-1" role="dialog">
+                        <div style="margin-top:30px;width:85%" class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-product clearfix">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <form action="/File" class="form-horizontal" enctype="multipart/form-data" method="post" role="form">
+                                                    <input type="hidden" name="book" value="@item.Id" />
+                                                    <input type="hidden" name="check" value="1" />
+                                                    @Html.AntiForgeryToken()       <div class="well bs-component">
+                                                        <br>
+                                                        <h4>Upload File</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-8 col-md-push-2">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <span class="submit-btn-1 mt-20 btn-hover-1">
+                                                                                Browse…
+                                                                                <input class="form-control" data-val="true" data-val-required="The Upload File field is required." id="FileAttach" name="FileAttach" placeholder="Upload File" type="file" value="">
+                                                                            </span>
+                                                                        </span>
+                                                                        <input type="text" class="form-control" readonly="">
+                                                                    </div>
+                                                                    <span class="field-validation-valid text-danger custom-danger" data-valmsg-for="FileAttach" data-valmsg-replace="true"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-5 col-md-10">
+                                                                <input type="submit" class="btn btn-danger" value="Upload">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <form action="/File" class="form-horizontal" enctype="multipart/form-data" method="post" role="form">
+                                                    <input type="hidden" name="book" value="@item.Id" />
+                                                    <input type="hidden" name="check" value="0" />
+                                                    @Html.AntiForgeryToken()       <div class="well bs-component">
+                                                        <br>
+                                                        <h4>Upload Image</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-8 col-md-push-2">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <span class="submit-btn-1 mt-20 btn-hover-1">
+                                                                                Browse…
+                                                                                <input class="form-control" data-val="true" data-val-required="The Upload File field is required." id="FileAttach" name="FileAttach" placeholder="Upload File" type="file" value="">
+                                                                            </span>
+                                                                        </span>
+                                                                        <input type="text" class="form-control" readonly="">
+                                                                    </div>
+                                                                    <span class="field-validation-valid text-danger custom-danger" data-valmsg-for="FileAttach" data-valmsg-replace="true"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-5 col-md-10">
+                                                                <input type="submit" class="btn btn-danger" value="Upload">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+
+                                        <form action="/Admin/Book/Add" method="post">
+                                            @if (true)
+                                            {
+                                                <div class="product-images">
+                                                   
+
+                                                    <div class="main-image images">
+
+                                                        <img alt="" id="imagexx" src="" />
+                                                    </div>
+                                                </div> <!-- .product-images -->
+
+
+                                                <div class="product-info">
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">Name:   </span><br />
+                                                            <input type="text" name="name" ><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">Price:   </span><br />
+                                                            <input style="width:30%" type="number" name="price"><br>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+
+                                                            <span class="new-price">
+                                                                <strong>Category:</strong><br />
+                                                                <input type="hidden" name="father" value="@item.Id" />
+                                                                <text>@item.Name</text>
+                                                                <em></em>
+                                                                <select name="son" style="width:30%">
+
+
+                                                                    @foreach (var father in Model.Father_Categories)
+                                                                    {
+                                                                        if (father.Id == item.Id)
+                                                                        {
+
+                                                                            foreach (var son in father.Categories)
+                                                                            {
+
+                                                                                <option value="@son.Id">@son.Name</option>
+
+
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                </select>
+
+
+
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="price-box-3">
+                                                        <div class="s-price-box">
+                                                            <span class="new-price">
+                                                                <strong>Number:</strong><br />
+                                                                <input type="number" name="number" value=""><br>
+                                                                <em></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="quick-desc">
+                                                        <div class="single-product-tab">
+                                                            <ul class="reviews-tab mb-20">
+                                                                @{
+                                                                    string description = "#descriptionsX" + item.Id;
+                                                                    string description1 = "descriptionsX" + item.Id;
+
+                                                                    string information = "#informationsX" + item.Id;
+                                                                    string information1 = "informationsX" + item.Id;
+
+
+                                                                    string reviews = "#reviewsX" + item.Id;
+                                                                    string reviews1 = "reviewsX" + item.Id;
+                                                                    string edit = "#edit" + item.Id;
+
+
+
+
+
+                                                                }
+                                                                <li class=""><a href="@description" data-toggle="tab" aria-expanded="false">Thêm thông tin</a></li>
+                                                                <li class=""><a href="@information" data-toggle="tab" aria-expanded="false">Mô tả</a></li>
+
+                                                            </ul>
+                                                            <div class="tab-content">
+                                                                <div role="tabpanel" class="tab-pane active" id="@description1">
+                                                                    <div style="display:grid;  grid-template-columns: auto auto ;">
+                                                                        <div class="grid-item">
+                                                                            <p>
+                                                                                
+
+
+                                                                                <strong>Author:</strong><br>
+                                                                                <select name="author" style="width:60%">
+
+                                                                                    @foreach (var color in Model.authors)
+                                                                                    {
+
+                                                                                        <option value="@color.Id">@color.Name</option>
+
+
+                                                                                    }
+                                                                                </select>
+                                                                                <em></em><br>
+                                                                                <strong>Publisher:</strong><br />
+                                                                                <select name="NXB" style="width:60%">
+
+                                                                                    @foreach (var chatlieu in Model.nXBs)
+                                                                                    {
+
+                                                                                        <option value="@chatlieu.Id">@chatlieu.Name</option>
+
+
+                                                                                    }
+                                                                                </select>
+                                                                                <em></em><br>
+
+                                                                                <strong>Paged:</strong> <br />
+                                                                                <input type="number" placeholder="Vui lòng điền giá trị số" name="page" style="width:30%"> /
+
+                                                                                <br>
+                                                                                <em></em>
+
+
+                                                                            </p>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div role="tabpanel" class="tab-pane" id="@information1">
+                                                                    <textarea name="description">
+ 
+</textarea>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="social-sharing">
+                                                        <div class="widget widget_socialsharing_widget">
+                                                            <h3 class="widget-title-modal">Share this product</h3>
+                                                            <ul class="social-icons clearfix">
+
+                                                                <li>
+                                                                    <button type="submit" class="pinterest" href="#" target="_blank" title="Save">
+                                                                        <i class="zmdi zmdi-save zmdi-hc-3x"></i>
+                                                                    </button>
+                                                                </li>
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </form>
+
+
+
+
+
+                                        '                      <!---product-info -->
+                                    </div><!-- .modal-product -->
+                                </div><!-- .modal-body -->
+                            </div><!-- .modal-content -->
+                        </div><!-- .modal-dialog -->
+                    </div>
+
+
+
+
+                    <!-- END Modal -->
+                }
+
+
+
+
+                <!-- END Modal -->
+
+            </div>
+
+
+
+
+
+
+        </div>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+

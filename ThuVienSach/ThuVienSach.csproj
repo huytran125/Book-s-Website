@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61F06200-4BAF-477B-9BD5-2FCC794D4C30}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ThuVienSach</RootNamespace>
+    <AssemblyName>ThuVienSach</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44351</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BookController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Father_CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NXBController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WorkerController.cs" />
+    <Compile Include="Areas\Admin\Models\BookModel.cs" />
+    <Compile Include="Areas\Shipper\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Shipper\Controllers\ShipController.cs" />
+    <Compile Include="Areas\Shipper\ShipperAreaRegistration.cs" />
+    <Compile Include="Common\CommonConstaint.cs" />
+    <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompleteController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImgviewModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assert\LoginAssert\css\font.css" />
+    <Content Include="Assert\LoginAssert\css\styleX.css" />
+    <Content Include="Assert\LoginAssert\js\index.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NXB\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Shipper\Views\web.config" />
+    <Content Include="Areas\Shipper\Views\Ship\Index.cshtml" />
+    <Content Include="Areas\Shipper\Views\Ship\Receive.cshtml" />
+    <Content Include="Areas\Shipper\Views\Ship\Receive2.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Worker\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Father_Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\Search.cshtml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="subas\404.html" />
+    <Content Include="subas\about.html" />
+    <Content Include="subas\audio\blog-audio.mp3" />
+    <Content Include="subas\blog.html" />
+    <Content Include="subas\cart.html" />
+    <Content Include="subas\checkout.html" />
+    <Content Include="subas\contact.html" />
+    <Content Include="subas\css\bootstrap.min.css" />
+    <Content Include="subas\css\color\color-core.css" />
+    <Content Include="subas\css\color\skin-amber.css" />
+    <Content Include="subas\css\color\skin-blue-grey.css" />
+    <Content Include="subas\css\color\skin-blue.css" />
+    <Content Include="subas\css\color\skin-cyan.css" />
+    <Content Include="subas\css\color\skin-default.css" />
+    <Content Include="subas\css\color\skin-green.css" />
+    <Content Include="subas\css\color\skin-purple.css" />
+    <Content Include="subas\css\color\skin-teal.css" />
+    <Content Include="subas\css\core.css" />
+    <Content Include="subas\css\custom.css" />
+    <Content Include="subas\css\material-design-iconic-font.css" />
+    <Content Include="subas\css\plugins\animate.css" />
+    <Content Include="subas\css\plugins\fancybox\blank.gif" />
+    <Content Include="subas\css\plugins\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="subas\css\plugins\fancybox\fancybox_loading.gif" />
+    <Content Include="subas\css\plugins\fancybox\fancybox_overlay.png" />
+    <Content Include="subas\css\plugins\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="subas\css\plugins\fancybox\fancybox_sprite.png" />
+    <Content Include="subas\css\plugins\fancybox\jquery.fancybox.css" />
+    <Content Include="subas\css\plugins\jquery-ui.min.css" />
+    <Content Include="subas\css\plugins\jquery.mb.YTPlayer.min.css" />
+    <Content Include="subas\css\plugins\meanmenu.min.css" />
+    <Content Include="subas\css\plugins\slick.css" />
+    <Content Include="subas\css\plugins\textanimate.css" />
+    <Content Include="subas\css\responsive.css" />
+    <Content Include="subas\css\shortcode\default.css" />
+    <Content Include="subas\css\shortcode\footer.css" />
+    <Content Include="subas\css\shortcode\header.css" />
+    <Content Include="subas\css\shortcode\shortcodes.css" />
+    <Content Include="subas\css\shortcode\slider.css" />
+    <Content Include="subas\css\style.css" />
+    <Content Include="subas\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="subas\images\bg\1.jpg" />
+    <Content Include="subas\images\bg\2.jpg" />
+    <Content Include="subas\images\bg\3.jpg" />
+    <Content Include="subas\images\bg\4.jpg" />
+    <Content Include="subas\images\bg\5.jpg" />
+    <Content Include="subas\images\bg\6.jpg" />
+    <Content Include="subas\images\bg\7.jpg" />
+    <Content Include="subas\images\bg\8.jpg" />
+    <Content Include="subas\images\bg\9.jpg" />
+    <Content Include="subas\images\cart\1.jpg" />
+    <Content Include="subas\images\color-customizer\bodybg\1.jpg" />
+    <Content Include="subas\images\color-customizer\bodybg\2.jpg" />
+    <Content Include="subas\images\color-customizer\color-customizer.html" />
+    <Content Include="subas\images\color-customizer\main-bg-1-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-10-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-10.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-2-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-3-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-3.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-4-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-4.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-5-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-5.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-6-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-6.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-7-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-7.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-8-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-8.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-9-thum.jpg" />
+    <Content Include="subas\images\color-customizer\main-bg-9.jpg" />
+    <Content Include="subas\images\color-customizer\sfdgdf.png" />
+    <Content Include="subas\images\customizer\bodybg\01.jpg" />
+    <Content Include="subas\images\customizer\bodybg\02.jpg" />
+    <Content Include="subas\images\customizer\bodybg\03.jpg" />
+    <Content Include="subas\images\customizer\bodybg\04.jpg" />
+    <Content Include="subas\images\customizer\bodybg\05.jpg" />
+    <Content Include="subas\images\customizer\bodybg\06.jpg" />
+    <Content Include="subas\images\customizer\bodybg\07.jpg" />
+    <Content Include="subas\images\customizer\bodybg\08.jpg" />
+    <Content Include="subas\images\customizer\pattern\1.png" />
+    <Content Include="subas\images\customizer\pattern\2.png" />
+    <Content Include="subas\images\customizer\pattern\3.png" />
+    <Content Include="subas\images\customizer\pattern\4.png" />
+    <Content Include="subas\images\customizer\pattern\5.png" />
+    <Content Include="subas\images\customizer\pattern\6.png" />
+    <Content Include="subas\images\customizer\pattern\7.png" />
+    <Content Include="subas\images\customizer\pattern\8.png" />
+    <Content Include="subas\images\icons\ajax-loader.gif" />
+    <Content Include="subas\images\logo\logo.png" />
+    <Content Include="subas\img\author\1.jpg" />
+    <Content Include="subas\img\author\2.jpg" />
+    <Content Include="subas\img\author\3.jpg" />
+    <Content Include="subas\img\banner\1.jpg" />
+    <Content Include="subas\img\banner\2.jpg" />
+    <Content Include="subas\img\banner\3.jpg" />
+    <Content Include="subas\img\banner\4.jpg" />
+    <Content Include="subas\img\bg\bg-1.jpg" />
+    <Content Include="subas\img\bg\bg-11.jpg" />
+    <Content Include="subas\img\bg\blog-photo-bg.png" />
+    <Content Include="subas\img\bg\grid.png" />
+    <Content Include="subas\img\bg\ribbon.png" />
+    <Content Include="subas\img\blog\1.jpg" />
+    <Content Include="subas\img\blog\10.jpg" />
+    <Content Include="subas\img\blog\2.jpg" />
+    <Content Include="subas\img\blog\3.jpg" />
+    <Content Include="subas\img\blog\4.jpg" />
+    <Content Include="subas\img\blog\5.jpg" />
+    <Content Include="subas\img\blog\6.jpg" />
+    <Content Include="subas\img\blog\7.jpg" />
+    <Content Include="subas\img\blog\8.jpg" />
+    <Content Include="subas\img\breadcrumb\1.png" />
+    <Content Include="subas\img\cart\1.jpg" />
+    <Content Include="subas\img\cart\2.jpg" />
+    <Content Include="subas\img\cart\3.jpg" />
+    <Content Include="subas\img\cart\4.jpg" />
+    <Content Include="subas\img\cart\5.jpg" />
+    <Content Include="subas\img\cart\6.jpg" />
+    <Content Include="subas\img\icon\down-arrow.png" />
+    <Content Include="subas\img\icon\favicon.png" />
+    <Content Include="subas\img\icon\map-marker.png" />
+    <Content Include="subas\img\logo\logo.png" />
+    <Content Include="subas\img\mega-menu\1.jpg" />
+    <Content Include="subas\img\others\about.jpg" />
+    <Content Include="subas\img\others\error.jpg" />
+    <Content Include="subas\img\payment\1.jpg" />
+    <Content Include="subas\img\payment\1.png" />
+    <Content Include="subas\img\payment\2.jpg" />
+    <Content Include="subas\img\payment\2.png" />
+    <Content Include="subas\img\payment\3.jpg" />
+    <Content Include="subas\img\payment\3.png" />
+    <Content Include="subas\img\payment\4.jpg" />
+    <Content Include="subas\img\payment\4.png" />
+    <Content Include="subas\img\product-2\1.jpg" />
+    <Content Include="subas\img\product-2\2.jpg" />
+    <Content Include="subas\img\product-2\3.jpg" />
+    <Content Include="subas\img\product-2\4.jpg" />
+    <Content Include="subas\img\product-2\5.jpg" />
+    <Content Include="subas\img\product-2\6.jpg" />
+    <Content Include="subas\img\product-2\7.jpg" />
+    <Content Include="subas\img\product\1.jpg" />
+    <Content Include="subas\img\product\10.jpg" />
+    <Content Include="subas\img\product\11.jpg" />
+    <Content Include="subas\img\product\12.jpg" />
+    <Content Include="subas\img\product\2.jpg" />
+    <Content Include="subas\img\product\3.jpg" />
+    <Content Include="subas\img\product\4.jpg" />
+    <Content Include="subas\img\product\5.jpg" />
+    <Content Include="subas\img\product\6.jpg" />
+    <Content Include="subas\img\product\7.jpg" />
+    <Content Include="subas\img\product\8.jpg" />
+    <Content Include="subas\img\product\9.jpg" />
+    <Content Include="subas\img\product\quick.jpg" />
+    <Content Include="subas\img\product\quickview.jpg" />
+    <Content Include="subas\img\slider\slider-1\1.jpg" />
+    <Content Include="subas\img\slider\slider-1\2.jpg" />
+    <Content Include="subas\img\slider\slider-2\layer-1.png" />
+    <Content Include="subas\img\slider\slider-2\layer-2.png" />
+    <Content Include="subas\img\slider\slider-2\slider-1.jpg" />
+    <Content Include="subas\img\team\1.png" />
+    <Content Include="subas\img\team\2.png" />
+    <Content Include="subas\img\team\3.png" />
+    <Content Include="subas\img\up-comming\1.jpg" />
+    <Content Include="subas\img\up-comming\2.jpg" />
+    <Content Include="subas\index.html" />
+    <Content Include="subas\index2.js" />
+    <Content Include="subas\js\bootstrap.min.js" />
+    <Content Include="subas\js\jquery.nivo.slider.js" />
+    <Content Include="subas\js\main.js" />
+    <Content Include="subas\js\map.js" />
+    <Content Include="subas\js\plugins.js" />
+    <Content Include="subas\js\style-customizer.js" />
+    <Content Include="subas\js\vendor\jquery-3.1.1.min.js" />
+    <Content Include="subas\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="subas\lib\css\nivo-slider.css" />
+    <Content Include="subas\lib\img\arrows-2.png" />
+    <Content Include="subas\lib\img\arrows.png" />
+    <Content Include="subas\lib\img\bullets-2.png" />
+    <Content Include="subas\lib\img\bullets.png" />
+    <Content Include="subas\lib\img\loading-2.gif" />
+    <Content Include="subas\lib\img\loading.gif" />
+    <Content Include="subas\lib\js\jquery.nivo.slider.js" />
+    <Content Include="subas\login.html" />
+    <Content Include="subas\Modal.txt" />
+    <Content Include="subas\Modal2.txt" />
+    <Content Include="subas\my-account.html" />
+    <Content Include="subas\new 1.html" />
+    <Content Include="subas\New Text Document %282%29.txt" />
+    <Content Include="subas\New Text Document %283%29.txt" />
+    <Content Include="subas\New Text Document.txt" />
+    <Content Include="subas\new2.html" />
+    <Content Include="subas\order.html" />
+    <Content Include="subas\shop.html" />
+    <Content Include="subas\single-blog.html" />
+    <Content Include="subas\single-product.html" />
+    <Content Include="subas\style.css" />
+    <Content Include="subas\style2.css" />
+    <Content Include="subas\test1.html" />
+    <Content Include="subas\test2.html" />
+    <Content Include="subas\Untitled-2.html" />
+    <Content Include="subas\wishlist.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="subas\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="subas\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="subas\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="subas\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="subas\images\bg\PH-57fe056ab4e3157.zip" />
+    <Content Include="subas\new 1" />
+    <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Complete\Complete.cshtml" />
+    <Content Include="Views\Complete\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Shop\Detail.cshtml" />
+    <Content Include="Views\Shop\Search.cshtml" />
+    <Content Include="Views\Shared\_Layout3.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Shipper\Models\" />
+    <Folder Include="Areas\Shipper\Views\Base\" />
+    <Folder Include="Areas\Shipper\Views\Shared\" />
+    <Folder Include="subas\img\brand\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Logout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{0ebe9d13-7546-454a-ab70-01dff3c41b04}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63068</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44351/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

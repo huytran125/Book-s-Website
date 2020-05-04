@@ -1,0 +1,555 @@
+﻿@using ThuVienSach.Common;
+@using Model.DAO;
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Subash || Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.png">
+    <!-- All CSS Files -->
+    <!-- Bootstrap fremwork main css -->
+    <link href="~/subas/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Nivo-slider css -->
+    <link href="~/subas/lib/css/nivo-slider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="lib/css/nivo-slider.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link href="~/subas/css/core.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link href="~/subas/css/shortcode/shortcodes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link href="~/subas/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive css -->
+    <link href="~/subas/css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Template color css -->
+    <link href="~/subas/css/color/color-core.css" rel="stylesheet" />
+    <link href="css/color/color-core.css" data-style="styles" rel="stylesheet">
+    <!-- User style -->
+    <link href="~/subas/css/custom.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Modernizr JS -->
+    <script src="~/subas/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- START HEADER AREA -->
+        <header class="header-area header-wrapper">
+            <!-- header-top-bar -->
+            <div class="header-top-bar plr-185">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 hidden-xs">
+                            <div class="call-us">
+                                <p class="mb-0 roboto">(+88) 01234-567890</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="top-link clearfix">
+                                <ul class="link f-right">
+                                    <li>
+                                        <a href="my-account.html">
+                                            <i class="zmdi zmdi-account"></i>
+                                            @{
+                                                String x = "My Account";
+
+
+
+                                                var session = (UserLogin)Session[CommonConstaint.USER_SESSION];
+                                                if (session != null)
+
+                                                { x = session.Email; }
+
+
+                                            } @x
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/Register">
+                                            <i class="zmdi zmdi-favorite"></i>
+                                            Register
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/Login">
+                                            <i class="zmdi zmdi-lock"></i>
+                                            Login
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Logout">
+                                            <i class="zmdi zmdi-sign-in"></i>
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- header-middle-area -->
+            <div id="sticky-header" class="header-middle-area plr-185">
+                <div class="container-fluid">
+                    <div class="full-width-mega-dropdown">
+                        <div class="row">
+                            <!-- logo -->
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        8
+                                        <img src="~/subas/images/logo/logo.png" />
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- primary-menu -->
+                            <div class="col-md-8 hidden-sm hidden-xs">
+                                <nav id="primary-menu">
+                                    <ul class="main-menu text-center">
+                                        <li><a href="/Admin/Customer">Edit Customer</a></li>
+                                        <li class="mega-parent">
+                                            <a href="/Admin/Worker">Edit Worker</a>
+
+                                        </li>
+                                        <li class="mega-parent">
+                                            <a href="/Admin/Father_category">Edit Book Atribute</a>
+
+                                        </li>
+                                        <li class="mega-parent">
+                                            <a href="/Admin/Book">Edit Book</a>
+
+                                        </li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- header-search & total-cart -->
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="search-top-cart  f-right">
+                                    <!-- header-search -->
+                                    <div class="header-search f-left">
+                                        <div class="header-search-inner">
+                                            <button class="search-toggle">
+                                                <i class="zmdi zmdi-search"></i>
+                                            </button>
+                                            <form action="#">
+                                                <div class="top-search-box">
+                                                    <input type="text" placeholder="Search here your product...">
+                                                    <button type="submit">
+                                                        <i class="zmdi zmdi-search"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- total-cart -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER AREA -->
+        <!-- START MOBILE MENU AREA -->
+        <div class="mobile-menu-area hidden-lg hidden-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li>
+                                        <a href="shop.html">Products</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Pages</a>
+                                        <ul>
+                                            <li>
+                                                <a href="shop.html">Shop</a>
+                                            <li>
+                                                <a href="single-product.html">Single Product</a>
+                                            </li>
+                                            <li>
+                                                <a href="cart.html">Shopping Cart</a>
+                                            </li>
+                                            <li>
+                                                <a href="wishlist.html">Wishlist</a>
+                                            </li>
+                                            <li>
+                                                <a href="checkout.html">Checkout</a>
+                                            </li>
+                                            <li>
+                                                <a href="order.html">Order</a>
+                                            </li>
+                                            <li>
+                                                <a href="login.html">Login</a>
+                                            </li>
+                                            <li>
+                                                <a href="My-account.html">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="about.html">About us</a>
+                                            </li>
+                                            <li>
+                                                <a href="404.html">404</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                        <ul>
+                                            <li>
+                                                <a href="blog.html">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="single-blog.html">Blog Details</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MOBILE MENU AREA -->
+        <!-- START SLIDER AREA -->
+        <div class="slider-area  plr-185  mb-80">
+            <div class="container-fluid">
+                <div class="slider-content">
+                    <div class="row">
+                        <div class="active-slider-1 slick-arrow-1 slick-dots-1">
+                            <!-- layer-1 Start -->
+                            <div class="col-md-12">
+                                <div class="layer-1">
+                                    <div class="slider-img">
+                                        <img src="https://vcdn-ione.vnecdn.net/2019/03/01/1456479191232-7206891-15514044-3341-7353-1551404967.png" />
+                                    </div>
+                                    <div class="slider-info gray-bg">
+                                        <div class="slider-info-inner">
+                                            <h1 class="slider-title-1 text-uppercase text-black-1">Mắt Biếc</h1>
+                                            <div class="slider-brief text-black-2">
+                                                <p>Nhà văn Nguyễn Nhật Ánh nổi tiếng với những tác phẩm lớn lên cùng tuổi thơ mỗi người. Kính vạn hoa, Cô gái đến từ hôm qua, Thằng quỷ nhỏ... là những bộ truyện tuổi teen hài hước, hấp dẫn với nhiều thế hệ độc giả. Bên cạnh đó Nguyễn Nhật Ánh cũng có một dòng sách riêng dành cho lứa tuổi trưởng thành, với những Mắt Biếc, Đi qua hoa cúc hay Còn chút gì để nhớ. Truyện viết cho tuổi trưởng thành của Nguyễn Nhật Ánh không hề ngọt ngào và hài hước như những cuốn truyện tuổi teen mà trái lại, mang nhiều day dứt và buồn bã với cái kết không được trọn vẹn. Mắt Biếc là một tác phẩm như thế.</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- layer-1 end -->
+                            <!-- layer-1 Start -->
+                            <div class="col-md-12">
+                                <div class="layer-1">
+                                    <div class="slider-img">
+                                        <img src="http://loicuasach.com/wp-content/uploads/2018/06/C%C3%B2n-ch%C3%BAt-g%C3%AC-%C4%91%E1%BB%83-nh%E1%BB%9B-Nguy%E1%BB%85n-Nh%E1%BA%ADt-%C3%81nh-Gi%E1%BB%9Bi-thi%E1%BB%87u-s%C3%A1ch-L%E1%BB%9Di-c%E1%BB%A7a-s%C3%A1ch.jpg" alt="">
+                                    </div>
+                                    <div class="slider-info gray-bg">
+                                        <div class="slider-info-inner">
+                                            <h1 class="slider-title-1 text-uppercase text-black-1">Còn chút gì để nhớ</h1>
+                                            <div class="slider-brief text-black-2">
+                                                <p>
+                                                    “Xin cảm ơn thành phố có em
+                                                    Xin cảm ơn một mái tóc mềm
+                                                    Mai xa lắc trên đồn biên giới
+                                                    Còn một chút gì để nhớ để quên.”
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- layer-1 end -->
+                            <!-- layer-1 Start -->
+                            <div class="col-md-12">
+                                <div class="layer-1">
+                                    <div class="slider-img">
+                                        <img src="https://girly.vn/wp-content/uploads/2017/11/di-qua-hoa-cuc.jpg" alt="">
+                                    </div>
+                                    <div class="slider-info gray-bg">
+                                        <div class="slider-info-inner">
+                                            <h1 class="slider-title-1 text-uppercase text-black-1">Đi qua hoa cúc</h1>
+                                            <div class="slider-brief text-black-2">
+                                                <p>Có người thắc mắc rằng: “Làm sao mà chúng ta biết được rằng chúng ta đang dần lớn lên?” Câu trả lời hay nhất có lẽ nằm trong tác phẩm “Đi qua hoa cúc” của nhà văn Nguyễn Nhật Ánh, một câu chuyện kể về tình yêu đầu đời của một chàng trai hội tụ mọi yếu tố từ hài hước cho đến đau khổ nhưng không quá bi lụy, để ta thấy được tình yêu đầu có thể đẹp hay không không quan trọng, mà chính là ấn tượng về nó sẽ theo ta suốt đời</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- layer-1 end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SLIDER AREA -->
+        <!-- Start page content -->
+        <section id="page-content" class="page-wrapper">
+            @RenderBody()
+        </section>
+        <!-- End page content -->
+        <!-- START FOOTER AREA -->
+        <footer id="footer" class="footer-area">
+            <div class="footer-top">
+                <div class="container-fluid">
+                    <div class="plr-185">
+                        <div class="footer-top-inner gray-bg">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5 col-sm-4">
+                                    <div class="single-footer footer-about">
+                                        <div class="footer-logo">
+                                            <img src="img/logo/logo.png" alt="">
+                                        </div>
+                                        <div class="footer-brief">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the subas industry's standard dummy text ever since the 1500s,</p>
+                                            <p>When an unknown printer took a galley of type and If you are going to use a passage of Lorem Ipsum scrambled it to make.</p>
+                                        </div>
+                                        <ul class="footer-social">
+                                            <li>
+                                                <a class="facebook" href="" title="Facebook"><i class="zmdi zmdi-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a class="google-plus" href="" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a>
+                                            </li>
+                                            <li>
+                                                <a class="twitter" href="" title="Twitter"><i class="zmdi zmdi-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a class="rss" href="" title="RSS"><i class="zmdi zmdi-rss"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 hidden-md hidden-sm">
+                                    <div class="single-footer">
+                                        <h4 class="footer-title border-left">Shipping</h4>
+                                        <ul class="footer-menu">
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>New Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Discount Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Best Sell Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Popular Products</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Manufactirers</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Suppliers</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="zmdi zmdi-circle"></i><span>Special Products</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-4">
+                                    <div class="single-footer">
+                                        <h4 class="footer-title border-left">my account</h4>
+                                        <ul class="footer-menu">
+                                            <li>
+                                                <a href="my-account.html"><i class="zmdi zmdi-circle"></i><span>My Account</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="wishlist.html"><i class="zmdi zmdi-circle"></i><span>My Wishlist</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="cart.html"><i class="zmdi zmdi-circle"></i><span>My Cart</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="login.html"><i class="zmdi zmdi-circle"></i><span>Sign In</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="login.html"><i class="zmdi zmdi-circle"></i><span>Registration</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="checkout.html"><i class="zmdi zmdi-circle"></i><span>Check out</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="order.html"><i class="zmdi zmdi-circle"></i><span>Oder Complete</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="single-footer">
+                                        <h4 class="footer-title border-left">Get in touch</h4>
+                                        <div class="footer-message">
+                                            <form action="#">
+                                                <input type="text" name="name" placeholder="Your name here...">
+                                                <input type="text" name="email" placeholder="Your email here...">
+                                                <textarea class="height-80" name="message" placeholder="Your messege here..."></textarea>
+                                                <button class="submit-btn-1 mt-20 btn-hover-1" type="submit">submit message</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom black-bg">
+                <div class="container-fluid">
+                    <div class="plr-185">
+                        <div class="copyright">
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="copyright-text">
+                                        <p>&copy; <a href="https://freethemescloud.com/" target="_blank">Free themes Cloud</a> 2016. All Rights Reserved.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xs-12">
+                                    <ul class="footer-payment text-right">
+                                        <li>
+                                            <a href="#"><img src="img/payment/1.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/payment/2.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/payment/3.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/payment/4.jpg" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END FOOTER AREA -->
+        <!-- START QUICKVIEW PRODUCT -->
+        <div id="quickview-wrapper">
+            <!-- Modal -->
+            <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-product clearfix">
+                                <div class="product-images">
+                                    <div class="main-image images">
+                                        <img alt="" src="img/product/quickview.jpg">
+                                    </div>
+                                </div><!-- .product-images -->
+
+                                <div class="product-info">
+                                    <h1>Aenean eu tristique</h1>
+                                    <div class="price-box-3">
+                                        <div class="s-price-box">
+                                            <span class="new-price">£160.00</span>
+                                            <span class="old-price">£190.00</span>
+                                        </div>
+                                    </div>
+                                    <a href="single-product-left-sidebar.html" class="see-all">See all features</a>
+                                    <div class="quick-add-to-cart">
+                                        <form method="post" class="cart">
+                                            <div class="numbers-row">
+                                                <input type="number" id="french-hens" value="3">
+                                            </div>
+                                            <button class="single_add_to_cart_button" type="submit">Add to cart</button>
+                                        </form>
+                                    </div>
+                                    <div class="quick-desc">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero.
+                                    </div>
+                                    <div class="social-sharing">
+                                        <div class="widget widget_socialsharing_widget">
+                                            <h3 class="widget-title-modal">Share this product</h3>
+                                            <ul class="social-icons clearfix">
+                                                <li>
+                                                    <a class="facebook" href="#" target="_blank" title="Facebook">
+                                                        <i class="zmdi zmdi-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="google-plus" href="#" target="_blank" title="Google +">
+                                                        <i class="zmdi zmdi-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="twitter" href="#" target="_blank" title="Twitter">
+                                                        <i class="zmdi zmdi-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="pinterest" href="#" target="_blank" title="Pinterest">
+                                                        <i class="zmdi zmdi-pinterest"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="rss" href="#" target="_blank" title="RSS">
+                                                        <i class="zmdi zmdi-rss"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- .product-info -->
+                            </div><!-- .modal-product -->
+                        </div><!-- .modal-body -->
+                    </div><!-- .modal-content -->
+                </div><!-- .modal-dialog -->
+            </div>
+            <!-- END Modal -->
+        </div>
+        <!-- END QUICKVIEW PRODUCT -->
+    </div>
+    <!-- Body main wrapper end -->
+    <!-- Placed JS at the end of the document so the pages load faster -->
+    <!-- jquery latest version -->
+    <script src="~/subas/js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="js/vendor/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="~/subas/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- jquery.nivo.slider js -->
+    <script src="~/subas/lib/js/jquery.nivo.slider.js"></script>
+    <script src="lib/js/jquery.nivo.slider.js"></script>
+    <!-- All js plugins included in this file. -->
+    <script src="~/subas/js/plugins.js"></script>
+    <script src="js/plugins.js"></script>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <script src="~/subas/js/main.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

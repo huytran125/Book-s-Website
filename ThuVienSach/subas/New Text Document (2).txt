@@ -1,0 +1,673 @@
+  @if (item.Id_fatherCategory == 2)
+                            {
+
+                                foreach (var itemtbvs in Model.thietbivesinh)
+                                {
+
+                                    if (item.Id == itemtbvs.Id_product)
+                                    {
+                                        var x = itemtbvs;
+
+                                        <div class="product-images">
+                                            <div class="w3-section " style="margin-top:30px;">
+                                                <button style="float:left" class="w3-button w3-light-grey" onclick="plusDivs(-1) ">? Prev</button>
+                                                <button style="float:right" class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ?</button>
+                                            </div>
+                                            <div class="main-image images">
+                                                <div class="imgs-zoom-area">
+                                                    <div style="height:100%;"></div>
+                                                    <img class="mySlides" src="https://www.w3schools.com/w3css/img_nature_wide.jpg" style="width:100%;">
+                                                    <img class="mySlides" src="https://dongtamshop.com/wp-content/uploads/2019/03/D4080ORCHID001-H.jpg" style="width:100%">
+                                                    <img class="mySlides" src="https://dongtamshop.com/wp-content/uploads/2019/03/D4080URBAN001.jpg" style="width:100%">
+
+
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div><!-- .product-images -->
+
+
+                                        <div class="product-info">
+                                            <h1>@itemtbvs.Product.Name</h1>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+                                                    <span class="new-price">Giá:   @item.Price</span>
+                                                    <span class="old-price">£190.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+
+                                                    <span class="new-price">
+                                                        <strong>Lo?i:</strong>
+                                                        @itemtbvs.Product.Father_category.Name / @itemtbvs.Product.Category.Name <em></em><br>
+
+
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+                                                    <span class="new-price">
+                                                        <strong>S? lu?ng:</strong>
+                                                        Xám nh?t			<em></em><br>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="quick-desc">
+                                                <div class="single-product-tab">
+                                                    <ul class="reviews-tab mb-20">
+                                                        @{
+                                                            string description = "#description" + item.Id;
+                                                            string description1 = "description" + item.Id;
+
+                                                            string information = "#information" + item.Id;
+                                                            string information1 = "information" + item.Id;
+
+
+                                                            string reviews = "#reviews" + item.Id;
+                                                            string reviews1 = "reviews" + item.Id;
+                                                            string edit = "#edit" + item.Id;
+
+
+
+
+
+                                                        }
+                                                        <li class=""><a href="@description" data-toggle="tab" aria-expanded="false">description</a></li>
+                                                        <li class=""><a href="@information" data-toggle="tab" aria-expanded="false">information</a></li>
+                                                        <li class="active"><a href="@reviews" data-toggle="tab" aria-expanded="true">reviews</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane" id="@description1">
+                                                            <div style="display:grid;  grid-template-columns: auto auto ;">
+                                                                <div class="grid-item">
+                                                                    <p>
+                                                                        <strong>Mã s?n ph?m:</strong>
+                                                                        @itemtbvs.Product.Code
+                                                                        <br>
+                                                                        <strong>Màu s?c:</strong>
+                                                                        @itemtbvs.Product.Color.Name <em></em><br>
+                                                                        <strong>Ch?t li?u:</strong>
+                                                                        @itemtbvs.Product.ChatLieu.Name <em></em><br>
+
+                                                                        <strong>Ðóng gói:</strong>
+                                                                        @itemtbvs.Product.Pakage @itemtbvs.Product.Father_category.To_Pakage <em></em><br>
+
+                                                                        <strong>Xu?t x?:</strong>
+                                                                        @itemtbvs.Product.FromPlace		<em></em><br>
+                                                                        <strong>Nhà cung c?p:</strong>
+                                                                        @itemtbvs.Product.Supplier.Name <em></em><br>
+                                                                        @if (itemtbvs.Product.Warranty == null)
+                                                                        {
+                                                                            <strong>B?o hành:</strong>
+                                                                            <text> Không có </text> <em></em><br>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <strong>B?o hành:</strong>
+                                                                            @itemtbvs.Product.Warranty <em></em><br>
+                                                                        }
+                                                                        <strong>Ua chu?ng:</strong>
+                                                                        @itemtbvs.Product.TopHot            <em></em><br>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="grid-item" style="width:50%">
+                                                                    <p>
+                                                                        <strong>Nano kháng khu?n:</strong>
+                                                                        @itemtbvs.Nanokhangkhuan    <em></em><br>
+                                                                        <strong>Ti?t ki?m nu?c:</strong>
+                                                                        @itemtbvs.Tietkiemnuoc  <em></em><br>
+                                                                        <strong>B? xã:</strong>
+                                                                        @itemtbvs.Boxa_thietbivesinh.Name <em></em><br>
+
+
+
+
+
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="@information1">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, neque fugit inventore quo dignissimos est iure natus quis nam illo officiis,  deleniti consectetur non ,aspernatur.</p>
+                                                            <p>rerum blanditiis dolore dignissimos expedita consequatur deleniti consectetur non exercitationem.</p>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane active" id="@reviews1">
+                                                            <!-- reviews-tab-desc -->
+                                                            <div class="reviews-tab-desc">
+                                                                <!-- single comments -->
+                                                                <div class="media mt-30">
+                                                                    <div class="media-left">
+                                                                        <a href="#"><img class="media-object" src="img/author/1.jpg" alt="#"></a>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="clearfix">
+                                                                            <div class="name-commenter pull-left">
+                                                                                <h6 class="media-heading"><a href="#">Gerald Barnes</a></h6>
+                                                                                <p class="mb-10">27 Jun, 2016 at 2:30pm</p>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <ul class="reply-delate">
+                                                                                    <li><a href="#">Reply</a></li>
+                                                                                    <li>/</li>
+                                                                                    <li><a href="#">Delate</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas .</p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- single comments -->
+                                                                <div class="media mt-30">
+                                                                    <div class="media-left">
+                                                                        <a href="#"><img class="media-object" src="img/author/2.jpg" alt="#"></a>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="clearfix">
+                                                                            <div class="name-commenter pull-left">
+                                                                                <h6 class="media-heading"><a href="#">Gerald Barnes</a></h6>
+                                                                                <p class="mb-10">27 Jun, 2016 at 2:30pm</p>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <ul class="reply-delate">
+                                                                                    <li><a href="#">Reply</a></li>
+                                                                                    <li>/</li>
+                                                                                    <li><a href="#">Delate</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas .</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="social-sharing">
+                                                <div class="widget widget_socialsharing_widget">
+                                                    <h3 class="widget-title-modal">Share this product</h3>
+                                                    <ul class="social-icons clearfix">
+                                                        <li>
+                                                            <a class="facebook" href="#" target="_blank" title="Facebook">
+                                                                <i class="zmdi zmdi-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="google-plus" href="#" target="_blank" title="Google +">
+                                                                <i class="zmdi zmdi-google-plus"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="twitter" href="#" target="_blank" title="Twitter">
+                                                                <i class="zmdi zmdi-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <button type="submit" class="pinterest" href="#" target="_blank" title="Save">
+                                                                <i class="zmdi zmdi-save zmdi-hc-3x"></i>
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="@edit" title="Quickview"><i class="zmdi zmdi-zoom-edit"></i></a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
+
+                            }
+                            @if (item.Id_fatherCategory == 3)
+                            {
+
+                                foreach (var itemximang in Model.ximang)
+                                {
+
+                                    if (item.Id == itemximang.Id_product)
+                                    {
+                                        var x = itemximang;
+
+                                        <div class="product-images">
+                                            <div class="w3-section " style="margin-top:30px;">
+                                                <button style="float:left" class="w3-button w3-light-grey" onclick="plusDivs(-1) ">? Prev</button>
+                                                <button style="float:right" class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ?</button>
+                                            </div>
+                                            <div class="main-image images">
+                                                <div class="imgs-zoom-area">
+                                                    <div style="height:100%;"></div>
+                                                    <img class="mySlides" src="https://www.w3schools.com/w3css/img_nature_wide.jpg" style="width:100%;">
+                                                    <img class="mySlides" src="https://dongtamshop.com/wp-content/uploads/2019/03/D4080ORCHID001-H.jpg" style="width:100%">
+                                                    <img class="mySlides" src="https://dongtamshop.com/wp-content/uploads/2019/03/D4080URBAN001.jpg" style="width:100%">
+
+
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div><!-- .product-images -->
+
+
+                                        <div class="product-info">
+                                            <h1>@itemximang.Product.Name</h1>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+                                                    <span class="new-price">Giá:   @item.Price</span>
+                                                    <span class="old-price">£190.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+
+                                                    <span class="new-price">
+                                                        <strong>Lo?i:</strong>
+                                                        @itemximang.Product.Father_category.Name / @itemximang.Product.Category.Name <em></em><br>
+
+
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+                                                    <span class="new-price">
+                                                        <strong>S? lu?ng:</strong>
+                                                        Xám nh?t			<em></em><br>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="quick-desc">
+                                                <div class="single-product-tab">
+                                                    <ul class="reviews-tab mb-20">
+                                                        @{
+                                                            string description = "#description" + item.Id;
+                                                            string description1 = "description" + item.Id;
+
+                                                            string information = "#information" + item.Id;
+                                                            string information1 = "information" + item.Id;
+
+
+                                                            string reviews = "#reviews" + item.Id;
+                                                            string reviews1 = "reviews" + item.Id;
+                                                            string edit = "#edit" + item.Id;
+
+
+
+
+
+                                                        }
+                                                        <li class=""><a href="@description" data-toggle="tab" aria-expanded="false">description</a></li>
+                                                        <li class=""><a href="@information" data-toggle="tab" aria-expanded="false">information</a></li>
+                                                        <li class="active"><a href="@reviews" data-toggle="tab" aria-expanded="true">reviews</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane" id="@description1">
+                                                            <div style="display:grid;  grid-template-columns: auto auto ;">
+                                                                <div class="grid-item">
+                                                                    <p>
+                                                                        <strong>Mã s?n ph?m:</strong>
+                                                                        @itemximang.Product.Code
+                                                                        <br>
+                                                                        <strong>Màu s?c:</strong>
+                                                                        @itemximang.Product.Color.Name <em></em><br>
+                                                                        <strong>Ch?t li?u:</strong>
+                                                                        @itemximang.Product.ChatLieu.Name <em></em><br>
+
+                                                                        <strong>Ðóng gói:</strong>
+                                                                        @itemximang.Product.Pakage @itemximang.Product.Father_category.To_Pakage <em></em><br>
+
+                                                                        <strong>Xu?t x?:</strong>
+                                                                        @itemximang.Product.FromPlace		<em></em><br>
+                                                                        <strong>Nhà cung c?p:</strong>
+                                                                        @itemximang.Product.Supplier.Name <em></em><br>
+                                                                        @if (itemximang.Product.Warranty == null)
+                                                                        {
+                                                                            <strong>B?o hành:</strong>
+                                                                            <text> Không có </text> <em></em><br>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <strong>B?o hành:</strong>
+                                                                            @itemximang.Product.Warranty <em></em><br>
+                                                                        }
+                                                                        <strong>Ua chu?ng:</strong>
+                                                                        @itemximang.Product.TopHot            <em></em><br>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="grid-item" style="width:50%">
+                                                                    <p>
+                                                                        <strong>Cu?ng d? ch?u nén:</strong>
+                                                                        @itemximang.CuongDoChiuNen    <em></em><br>
+                                                                        <strong>Hàm lu?ng So3 không vu?t quá:</strong>
+                                                                        @itemximang.HamLuongSo3  <em></em><br>
+
+
+
+
+
+
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="@information1">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, neque fugit inventore quo dignissimos est iure natus quis nam illo officiis,  deleniti consectetur non ,aspernatur.</p>
+                                                            <p>rerum blanditiis dolore dignissimos expedita consequatur deleniti consectetur non exercitationem.</p>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane active" id="@reviews1">
+                                                            <!-- reviews-tab-desc -->
+                                                            <div class="reviews-tab-desc">
+                                                                <!-- single comments -->
+                                                                <div class="media mt-30">
+                                                                    <div class="media-left">
+                                                                        <a href="#"><img class="media-object" src="img/author/1.jpg" alt="#"></a>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="clearfix">
+                                                                            <div class="name-commenter pull-left">
+                                                                                <h6 class="media-heading"><a href="#">Gerald Barnes</a></h6>
+                                                                                <p class="mb-10">27 Jun, 2016 at 2:30pm</p>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <ul class="reply-delate">
+                                                                                    <li><a href="#">Reply</a></li>
+                                                                                    <li>/</li>
+                                                                                    <li><a href="#">Delate</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas .</p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- single comments -->
+                                                                <div class="media mt-30">
+                                                                    <div class="media-left">
+                                                                        <a href="#"><img class="media-object" src="img/author/2.jpg" alt="#"></a>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="clearfix">
+                                                                            <div class="name-commenter pull-left">
+                                                                                <h6 class="media-heading"><a href="#">Gerald Barnes</a></h6>
+                                                                                <p class="mb-10">27 Jun, 2016 at 2:30pm</p>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <ul class="reply-delate">
+                                                                                    <li><a href="#">Reply</a></li>
+                                                                                    <li>/</li>
+                                                                                    <li><a href="#">Delate</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas .</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="social-sharing">
+                                                <div class="widget widget_socialsharing_widget">
+                                                    <h3 class="widget-title-modal">Share this product</h3>
+                                                    <ul class="social-icons clearfix">
+                                                        <li>
+                                                            <a class="facebook" href="#" target="_blank" title="Facebook">
+                                                                <i class="zmdi zmdi-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="google-plus" href="#" target="_blank" title="Google +">
+                                                                <i class="zmdi zmdi-google-plus"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="twitter" href="#" target="_blank" title="Twitter">
+                                                                <i class="zmdi zmdi-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <button type="submit" class="pinterest" href="#" target="_blank" title="Save">
+                                                                <i class="zmdi zmdi-save zmdi-hc-3x"></i>
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="@edit" title="Quickview"><i class="zmdi zmdi-zoom-edit"></i></a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
+
+                            }
+                            @if (item.Id_fatherCategory !=1 && item.Id_fatherCategory != 2 && item.Id_fatherCategory != 3)
+                            {
+
+                                    if (true)
+                                    {
+
+                                        <div class="product-images">
+                                            <div class="w3-section " style="margin-top:30px;">
+                                                <button style="float:left" class="w3-button w3-light-grey" onclick="plusDivs(-1) ">? Prev</button>
+                                                <button style="float:right" class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ?</button>
+                                            </div>
+                                            <div class="main-image images">
+                                                <div class="imgs-zoom-area">
+                                                    <div style="height:100%;"></div>
+                                                    <img class="mySlides" src="https://www.w3schools.com/w3css/img_nature_wide.jpg" style="width:100%;">
+                                                    <img class="mySlides" src="https://dongtamshop.com/wp-content/uploads/2019/03/D4080ORCHID001-H.jpg" style="width:100%">
+                                                    <img class="mySlides" src="https://dongtamshop.com/wp-content/uploads/2019/03/D4080URBAN001.jpg" style="width:100%">
+
+
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div><!-- .product-images -->
+
+
+                                        <div class="product-info">
+                                            <h1>@item.Name</h1>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+                                                    <span class="new-price">Giá:   @item.Price</span>
+                                                    <span class="old-price">£190.00</span>
+                                                </div>
+                                            </div>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+
+                                                    <span class="new-price">
+                                                        <strong>Lo?i:</strong>
+                                                        @item.Father_category.Name / @item.Category.Name <em></em><br>
+
+
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="price-box-3">
+                                                <div class="s-price-box">
+                                                    <span class="new-price">
+                                                        <strong>S? lu?ng:</strong>
+                                                        Xám nh?t			<em></em><br>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="quick-desc">
+                                                <div class="single-product-tab">
+                                                    <ul class="reviews-tab mb-20">
+                                                        @{
+                                                            string description = "#description" + item.Id;
+                                                            string description1 = "description" + item.Id;
+
+                                                            string information = "#information" + item.Id;
+                                                            string information1 = "information" + item.Id;
+
+
+                                                            string reviews = "#reviews" + item.Id;
+                                                            string reviews1 = "reviews" + item.Id;
+                                                            string edit = "#edit" + item.Id;
+
+
+
+
+
+                                                        }
+                                                        <li class=""><a href="@description" data-toggle="tab" aria-expanded="false">description</a></li>
+                                                        <li class=""><a href="@information" data-toggle="tab" aria-expanded="false">information</a></li>
+                                                        <li class="active"><a href="@reviews" data-toggle="tab" aria-expanded="true">reviews</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane" id="@description1">
+                                                            <div style="display:grid;  grid-template-columns: auto auto ;">
+                                                                <div class="grid-item">
+                                                                    <p>
+                                                                        <strong>Mã s?n ph?m:</strong>
+                                                                        @item.Code
+                                                                        <br>
+                                                                        <strong>Màu s?c:</strong>
+                                                                        @item.Color.Name <em></em><br>
+                                                                        <strong>Ch?t li?u:</strong>
+                                                                        @item.ChatLieu.Name <em></em><br>
+
+                                                                        <strong>Ðóng gói:</strong>
+                                                                        @item.Pakage @item.Father_category.To_Pakage <em></em><br>
+
+                                                                        <strong>Xu?t x?:</strong>
+                                                                        @item.FromPlace		<em></em><br>
+                                                                        <strong>Nhà cung c?p:</strong>
+                                                                        @item.Supplier.Name <em></em><br>
+                                                                        @if (item.Warranty == null)
+                                                                        {
+                                                                            <strong>B?o hành:</strong>
+                                                                            <text> Không có </text> <em></em><br>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <strong>B?o hành:</strong>
+                                                                            @item.Warranty    <em></em><br>
+                                                                        }
+                                                                        <strong>Ua chu?ng:</strong>
+                                                                        @item.TopHot            <em></em><br>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="grid-item" style="width:50%">
+                                                                  
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="@information1">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, neque fugit inventore quo dignissimos est iure natus quis nam illo officiis,  deleniti consectetur non ,aspernatur.</p>
+                                                            <p>rerum blanditiis dolore dignissimos expedita consequatur deleniti consectetur non exercitationem.</p>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane active" id="@reviews1">
+                                                            <!-- reviews-tab-desc -->
+                                                            <div class="reviews-tab-desc">
+                                                                <!-- single comments -->
+                                                                <div class="media mt-30">
+                                                                    <div class="media-left">
+                                                                        <a href="#"><img class="media-object" src="img/author/1.jpg" alt="#"></a>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="clearfix">
+                                                                            <div class="name-commenter pull-left">
+                                                                                <h6 class="media-heading"><a href="#">Gerald Barnes</a></h6>
+                                                                                <p class="mb-10">27 Jun, 2016 at 2:30pm</p>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <ul class="reply-delate">
+                                                                                    <li><a href="#">Reply</a></li>
+                                                                                    <li>/</li>
+                                                                                    <li><a href="#">Delate</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas .</p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- single comments -->
+                                                                <div class="media mt-30">
+                                                                    <div class="media-left">
+                                                                        <a href="#"><img class="media-object" src="img/author/2.jpg" alt="#"></a>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div class="clearfix">
+                                                                            <div class="name-commenter pull-left">
+                                                                                <h6 class="media-heading"><a href="#">Gerald Barnes</a></h6>
+                                                                                <p class="mb-10">27 Jun, 2016 at 2:30pm</p>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <ul class="reply-delate">
+                                                                                    <li><a href="#">Reply</a></li>
+                                                                                    <li>/</li>
+                                                                                    <li><a href="#">Delate</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas .</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="social-sharing">
+                                                <div class="widget widget_socialsharing_widget">
+                                                    <h3 class="widget-title-modal">Share this product</h3>
+                                                    <ul class="social-icons clearfix">
+                                                        <li>
+                                                            <a class="facebook" href="#" target="_blank" title="Facebook">
+                                                                <i class="zmdi zmdi-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="google-plus" href="#" target="_blank" title="Google +">
+                                                                <i class="zmdi zmdi-google-plus"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="twitter" href="#" target="_blank" title="Twitter">
+                                                                <i class="zmdi zmdi-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <button type="submit" class="pinterest" href="#" target="_blank" title="Save">
+                                                                <i class="zmdi zmdi-save zmdi-hc-3x"></i>
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="@edit" title="Quickview"><i class="zmdi zmdi-zoom-edit"></i></a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                
+
+                            }

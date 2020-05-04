@@ -1,0 +1,131 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+@using Model.EF;
+@using Model.DAO
+@model Order
+<div class="shop-section mb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="cart-tab">
+                   
+                    <li>
+                        <a href="#checkout" data-toggle="tab">
+                            <span>02</span>
+                            Checkout
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <!-- Tab panes -->
+                <div class="checkout-content box-shadow p-30">
+                    <form action="/Complete/Complete2" method="post">
+                        <div class="row">
+                            <!-- billing details -->
+                            <div class="col-md-6">
+                                <div class="billing-details pr-10">
+                                    <h6 class="widget-title border-left mb-20">billing details</h6>
+                                    <p>Your name is @Model.Customer.Name</p>
+                                    <p>Your phone is @Model.Customer.Phone</p>
+                                    <p>Your email is @Model.Customer.Account.Email</p>
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <textarea class="custom-textarea" name="diachi" placeholder="Your address here..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- our order -->
+                                <div class="payment-details pl-10 mb-50">
+                                    <h6 class="widget-title border-left mb-20">our order</h6>
+                                    <table>
+                                        <tbody>
+
+                                            @foreach (var item in Model.Order_detail)
+                                            {
+                                                <tr>
+                                                    <td class="td-title-1">
+                                                    @{Book_Dao dao = new Book_Dao();
+                                                        String name = dao.FindBook(Convert.ToInt32(item.Id_book)).Name;
+                                                        }
+                                                     @name</td>
+                                                    <td class="td-title-2">@item.Money VND</td>
+                                                </tr>
+                                                        }
+                                           
+                                            <tr>
+                                                <td class="td-title-1">Cart Subtotal</td>
+                                                <td class="td-title-2">
+                                                    @{ long final = 0;}
+                                                    @foreach (var item in Model.Order_detail)
+                                                    {
+                                                        final = Convert.ToInt64(item.Money) + final;
+                                                    }
+                                                    @final.ToString() VND;
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td-title-1">Shipping and Handing</td>
+                                                <td class="td-title-2">15000</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td-title-1">Vat</td>
+                                                <td class="td-title-2">
+                                                    @{long VAT = (final * 10) / 100;
+                                                        long Final2 = VAT + 15000 + final;
+                                                    } @VAT VND
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="order-total">Order Total</td>
+                                                <td class="order-total-price">@Model.total</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- payment-method -->
+                                <div class="payment-method">
+                                    <h6 class="widget-title border-left mb-20">payment method</h6>
+                                    <div id="accordion">
+                                        <div class="panel">
+                                            <h4 class="payment-title box-shadow">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#bank-transfer">
+                                                    Ship to your Address
+                                                </a>
+                                            </h4>
+                                           
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                                <!-- payment-method end -->
+                                <button class="submit-btn-1 mt-30 btn-hover-1" type="submit">place order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

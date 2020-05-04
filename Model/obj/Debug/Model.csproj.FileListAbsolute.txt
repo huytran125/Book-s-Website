@@ -1,0 +1,16 @@
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\Model.dll.config
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\Model.dll
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\Model.pdb
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\EntityFramework.dll
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\EntityFramework.xml
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\huyth\source\repos\ThuVienSach\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\huyth\source\repos\ThuVienSach\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\huyth\source\repos\ThuVienSach\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\huyth\source\repos\ThuVienSach\Model\obj\Debug\Model.dll
+C:\Users\huyth\source\repos\ThuVienSach\Model\obj\Debug\Model.pdb
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\PagedList.dll
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\PagedList.Mvc.dll
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\PagedList.xml
+C:\Users\huyth\source\repos\ThuVienSach\Model\bin\Debug\PagedList.Mvc.xml
